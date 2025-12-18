@@ -1,0 +1,256 @@
+.gift-box {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 4em auto 2em auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.box-base {
+  width: 180px;
+  height: 100px;
+  background: linear-gradient(135deg, #ff69b4 60%, #fff0f6 100%);
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 8px 32px rgba(255,105,180,0.18);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  overflow: visible;
+}
+.box-lid {
+  width: 180px;
+  height: 60px;
+  background: linear-gradient(135deg, #fff0f6 0%, #ff69b4 100%);
+  border-radius: 24px 24px 0 0;
+  box-shadow: 0 4px 16px rgba(255,182,230,0.18);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 1s cubic-bezier(.23,1.01,.32,1);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box-ribbon {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 180px;
+  background: linear-gradient(180deg, #ff69b4 60%, #fff0f6 100%);
+  z-index: 4;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(255,105,180,0.18);
+}
+.box-bow {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 32px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bow-left, .bow-right {
+  width: 28px;
+  height: 32px;
+  background: #ff69b4;
+  border-radius: 50% 50% 0 0;
+  position: absolute;
+  top: 0;
+}
+.bow-left {
+  left: 0;
+  transform: rotate(-25deg);
+}
+.bow-right {
+  right: 0;
+  transform: rotate(25deg);
+}
+.gift-box.open .box-lid {
+  transform: translateY(-80px) rotate(-20deg);
+}
+.gift-box.open .box-bow {
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+.open-btn {
+  position: absolute;
+  bottom: -48px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff69b4;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 0.8em 2em;
+  font-size: 1.1em;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(255,105,180,0.18);
+  cursor: pointer;
+  transition: background 0.2s;
+  z-index: 6;
+}
+.open-btn:hover {
+  background: #d63384;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #ffb6e6 0%, #ff69b4 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+}
+
+.hearts-bg {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.proposal-card {
+  background: rgba(255,255,255,0.95);
+  border-radius: 2em;
+  box-shadow: 0 8px 32px rgba(255,105,180,0.25);
+  padding: 2.5em 2em 2em 2em;
+  max-width: 420px;
+  margin: 2em auto;
+  z-index: 2;
+  position: relative;
+  text-align: center;
+  animation: fadeInUp 1.2s cubic-bezier(.23,1.01,.32,1) 0.2s both;
+}
+
+.proposal-card h1 {
+  color: #ff69b4;
+  font-size: 2.2em;
+  margin-bottom: 1em;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.letter {
+  color: #d63384;
+  font-size: 1.1em;
+  margin-top: 1.5em;
+  line-height: 1.7;
+  background: #fff0f6;
+  border-radius: 1em;
+  padding: 1.2em 1em;
+  box-shadow: 0 2px 8px rgba(255,182,230,0.12);
+}
+
+
+.video-section {
+  margin-bottom: 1.5em;
+}
+
+/* Gift Box Styles */
+.gift-box {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 4em auto 2em auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.box-base {
+  width: 180px;
+  height: 100px;
+  background: linear-gradient(135deg, #ff69b4 60%, #fff0f6 100%);
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 8px 32px rgba(255,105,180,0.18);
+  position: absolute;
+  bottom: 0;
+}
+.box-lid {
+  width: 180px;
+  height: 60px;
+  background: linear-gradient(135deg, #fff0f6 0%, #ff69b4 100%);
+  border-radius: 24px 24px 0 0;
+  box-shadow: 0 4px 16px rgba(255,182,230,0.18);
+  position: absolute;
+  top: 0;
+  transition: transform 1s cubic-bezier(.23,1.01,.32,1);
+  z-index: 2;
+}
+.gift-box.open .box-lid {
+  transform: translateY(-80px) rotate(-20deg);
+}
+.open-btn {
+  position: absolute;
+  bottom: -48px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff69b4;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 0.8em 2em;
+  font-size: 1.1em;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(255,105,180,0.18);
+  cursor: pointer;
+  transition: background 0.2s;
+  z-index: 3;
+}
+.open-btn:hover {
+  background: #d63384;
+}
+
+/* Proposal card popup animation */
+#proposalCard {
+  animation: popLetter 1.2s cubic-bezier(.23,1.01,.32,1) 0.1s both;
+}
+@keyframes popLetter {
+  0% { opacity: 0; transform: scale(0.7) translateY(60px); }
+  80% { opacity: 1; transform: scale(1.05) translateY(-8px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+video {
+  width: 100%;
+  border-radius: 1em;
+  box-shadow: 0 4px 16px rgba(255,105,180,0.18);
+}
+
+.music-player {
+  display: none;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .proposal-card {
+    padding: 1.2em 0.5em 1em 0.5em;
+    max-width: 98vw;
+  }
+  .letter {
+    font-size: 1em;
+  }
+}

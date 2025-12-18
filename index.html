@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will You Be My Girlfriend?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="hearts-bg"></div>
+    <div class="gift-box" id="giftBox">
+      <div class="box-lid">
+        <div class="box-bow">
+          <div class="bow-left"></div>
+          <div class="bow-right"></div>
+        </div>
+      </div>
+      <div class="box-base"></div>
+      <div class="box-ribbon"></div>
+      <button class="open-btn" id="openGift">Open Your Gift</button>
+    </div>
+    <div class="proposal-card" id="proposalCard" style="display:none;">
+      <h1>Will You Be My Girlfriend?</h1>
+      <div class="video-section">
+        <video id="specialVideo" controls poster="Image/Pretty outfit 2.png">
+          <source src="Image/Beautiful Mahalia.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="letter">
+        <p>My Dearest Love,</p>
+        <p>
+          I just want to say how truly beautiful, smart, and cute you are. Every moment with you is a gift, and I am so grateful for your love. I know the past couple of months have had their ups and downs, and I am truly sorry for any pain I’ve caused. Please know that I want you and only you—no woman could ever take your place in my heart.
+        </p>
+        <p>
+          You are my everything, my forever, and I hope you’ll say yes to being my girlfriend. I promise to cherish you, support you, and love you more every day.
+        </p>
+        <p style="margin-top:2em;">Yours truly,<br><strong>D. MINTO</strong><br>Your forever love</p>
+      </div>
+    </div>
+    <div class="music-player">
+      <div id="ytplayer"></div>
+      <button id="playMusicBtn" style="display:none;position:fixed;bottom:32px;right:32px;padding:1em 2em;background:#ff69b4;color:#fff;border:none;border-radius:24px;font-size:1.1em;z-index:999;box-shadow:0 2px 8px rgba(255,105,180,0.18);cursor:pointer;">Play Music</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    // Gift box open animation
+    document.getElementById('openGift').onclick = function() {
+      var box = document.getElementById('giftBox');
+      box.classList.add('open');
+      setTimeout(function() {
+        box.style.display = 'none';
+        document.getElementById('proposalCard').style.display = 'block';
+      }, 1200);
+    };
+
+    // YouTube music autoplay
+    let player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('ytplayer', {
+        height: '0',
+        width: '0',
+        videoId: 'm6urbZyHgO4',
+        playerVars: {
+          autoplay: 1,
+          loop: 1,
+          playlist: 'm6urbZyHgO4',
+          controls: 0,
+          mute: 0
+        },
+        events: {
+          onReady: function(e) {
+            // Try to play, show button if blocked
+            var playPromise = e.target.playVideo();
+            setTimeout(function() {
+              if (player.getPlayerState() !== 1) {
+                document.getElementById('playMusicBtn').style.display = 'block';
+              }
+            }, 1200);
+          }
+        }
+      });
+    }
+
+    // Fallback: show button if not playing after user interaction
+    document.body.addEventListener('click', function() {
+      if (player && player.getPlayerState() !== 1) {
+        document.getElementById('playMusicBtn').style.display = 'block';
+      }
+    });
+
+    document.getElementById('playMusicBtn').onclick = function() {
+      if (player) player.playVideo();
+      this.style.display = 'none';
+    };
+  </script>
+</body>
+</html>
